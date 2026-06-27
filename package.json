@@ -1,0 +1,14 @@
+{
+  "name": "nokia-3310-marvel-snake",
+  "version": "1.0.0",
+  "description": "Marvel Edition Nokia 3310 Snake Game with Playwright tests",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}

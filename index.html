@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marvel Edition Nokia 3310 Snake Game</title>
+  <meta name="description" content="Play the iconic Nokia 3310 Snake game re-imagined with custom Marvel Xpress-on covers, hero powers, retro sound effects, and pixel physics. Built using pure HTML, CSS, and JS.">
+  
+  <!-- SEO Heading Structure -->
+  <meta name="keywords" content="Nokia 3310, Snake, Marvel, Spider-man, Iron Man, Thor, Captain America, Retro Game, Canvas, Playwright E2E">
+  <meta name="author" content="Antigravity Coding Assistant">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Marvel Edition Nokia 3310 Snake Game">
+  <meta property="og:description" content="Play the iconic Nokia 3310 Snake game re-imagined with custom Marvel Xpress-on covers and retro chiptunes.">
+  <meta property="og:type" content="website">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Press+Start+2P&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="skin-classic">
+  <!-- Desktop Ambient Background Effects -->
+  <div class="glow-orb glow-1"></div>
+  <div class="glow-orb glow-2"></div>
+
+  <header class="app-header">
+    <div class="logo-area">
+      <span class="badge-retro">RETRO SIMULATOR</span>
+      <h1>MARVEL <span class="accent-text">3310</span></h1>
+      <p class="subtitle">Snake II: Avengers Assembly</p>
+    </div>
+    
+    <!-- Hero / Cover Selectors -->
+    <div class="cover-selector-panel">
+      <h3>CHOOSE XPRESS-ON COVER</h3>
+      <div class="cover-buttons">
+        <button id="theme-classic" class="theme-btn active" title="Classic Nokia 3310">
+          <span class="color-preview classic"></span> Classic
+        </button>
+        <button id="theme-spiderman" class="theme-btn" title="Spider-Man Edition">
+          <span class="color-preview spiderman"></span> Spidey
+        </button>
+        <button id="theme-ironman" class="theme-btn" title="Iron Man Edition">
+          <span class="color-preview ironman"></span> Iron Man
+        </button>
+        <button id="theme-thor" class="theme-btn" title="Thor Edition">
+          <span class="color-preview thor"></span> Thor
+        </button>
+        <button id="theme-capamerica" class="theme-btn" title="Captain America Edition">
+          <span class="color-preview capamerica"></span> Captain
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-container">
+    <!-- Instruction & Status Panel (Left) -->
+    <section class="panel side-panel instructions-panel">
+      <h2>S.H.I.E.L.D. DATA LINK</h2>
+      <div class="character-details" id="hero-info-panel">
+        <h3 id="hero-name">CLASSIC SNAKE</h3>
+        <p id="hero-desc">The original monochrome snake game. Steer around, eat food, grow longer, and avoid hitting the walls or yourself.</p>
+        <div class="power-stat">
+          <span>PIXEL THEME:</span>
+          <strong id="hero-pixel-theme">Standard Monochrome</strong>
+        </div>
+      </div>
+
+      <div class="control-guide">
+        <h3>CONTROLS</h3>
+        <ul class="control-list">
+          <li><span class="key">Arrow Keys</span> or <span class="key">W A S D</span> to Steer</li>
+          <li><span class="key">Enter</span> / <span class="key">Space</span> to Select / Start</li>
+          <li><span class="key">Esc</span> / <span class="key">Backspace</span> to Go Back / Pause</li>
+          <li><span class="key">M</span> to Mute Sounds</li>
+        </ul>
+        <div class="phone-mapping-note">
+          <p>Or use the physical phone keypad buttons below the screen.</p>
+        </div>
+      </div>
+
+      <div class="audio-toggle-container">
+        <button id="btn-audio-toggle" class="audio-btn sound-on">
+          <span class="audio-icon">🔊</span> AUDIO: ON
+        </button>
+      </div>
+    </section>
+
+    <!-- Nokia 3310 Phone Wrapper (Center) -->
+    <section class="phone-wrapper">
+      <div class="nokia-phone" id="nokia-device">
+        <!-- Ear Speaker Piece -->
+        <div class="ear-speaker"></div>
+        
+        <!-- Screen Frame/Bezel -->
+        <div class="screen-bezel">
+          <div class="screen-brand">NOKIA</div>
+          
+          <!-- LCD Screen Outer Glass -->
+          <div class="screen-glass">
+            <!-- Retro LCD Screen Container -->
+            <div class="lcd-screen" id="lcd-display">
+              <!-- Scanline Overlay -->
+              <div class="lcd-scanlines"></div>
+              <div class="lcd-glow"></div>
+              
+              <!-- HTML5 Game Canvas -->
+              <canvas id="game-canvas" width="84" height="48"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upper Navigation Keys -->
+        <div class="nav-keys-container">
+          <!-- Menu Select Action Button (Middle/Left under screen) -->
+          <button id="btn-action-menu" class="nokia-btn key-action" aria-label="Menu Select">
+            <span class="btn-label">Menu</span>
+            <div class="btn-groove"></div>
+          </button>
+          
+          <!-- Back/Clear Button (Right) -->
+          <button id="btn-action-back" class="nokia-btn key-action" aria-label="Clear Back">
+            <span class="btn-label">C</span>
+            <div class="btn-groove"></div>
+          </button>
+
+          <!-- Up/Down Scroll Rocker Button (Middle bottom) -->
+          <button id="btn-action-scroll" class="nokia-btn key-scroll" aria-label="Scroll Arrow">
+            <div class="scroll-arrows">
+              <span class="scroll-arrow up">▲</span>
+              <span class="scroll-arrow down">▼</span>
+            </div>
+            <div class="btn-groove"></div>
+          </button>
+        </div>
+
+        <!-- Number Keypad Matrix -->
+        <div class="keypad-matrix">
+          <button id="btn-key-1" class="nokia-btn key-num"><span class="num">1</span><span class="letters">o_o</span></button>
+          <button id="btn-key-2" class="nokia-btn key-num key-direction-up"><span class="num">2</span><span class="letters">abc</span><span class="dir-arrow">▲</span></button>
+          <button id="btn-key-3" class="nokia-btn key-num"><span class="num">3</span><span class="letters">def</span></button>
+
+          <button id="btn-key-4" class="nokia-btn key-num key-direction-left"><span class="num">4</span><span class="letters">ghi</span><span class="dir-arrow">◀</span></button>
+          <button id="btn-key-5" class="nokia-btn key-num key-action-select"><span class="num">5</span><span class="letters">jkl</span><span class="dir-arrow">🆗</span></button>
+          <button id="btn-key-6" class="nokia-btn key-num key-direction-right"><span class="num">6</span><span class="letters">mno</span><span class="dir-arrow">▶</span></button>
+
+          <button id="btn-key-7" class="nokia-btn key-num"><span class="num">7</span><span class="letters">pqrs</span></button>
+          <button id="btn-key-8" class="nokia-btn key-num key-direction-down"><span class="num">8</span><span class="letters">tuv</span><span class="dir-arrow">▼</span></button>
+          <button id="btn-key-9" class="nokia-btn key-num"><span class="num">9</span><span class="letters">wxyz</span></button>
+
+          <button id="btn-key-star" class="nokia-btn key-num"><span class="num">*</span><span class="letters">+</span></button>
+          <button id="btn-key-0" class="nokia-btn key-num"><span class="num">0</span><span class="letters">_</span></button>
+          <button id="btn-key-hash" class="nokia-btn key-num"><span class="num">#</span><span class="letters">⇧</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- High Score Leaderboard Panel (Right) -->
+    <section class="panel side-panel leaderboard-panel">
+      <h2>S.H.I.E.L.D. LEADERBOARD</h2>
+      <div class="leaderboard-tabs">
+        <button id="tab-classic" class="tab-btn active">Classic</button>
+        <button id="tab-spiderman" class="tab-btn">Spidey</button>
+        <button id="tab-ironman" class="tab-btn">Iron Man</button>
+        <button id="tab-thor" class="tab-btn">Thor</button>
+        <button id="tab-capamerica" class="tab-btn">Captain</button>
+      </div>
+      <div class="scores-container">
+        <ol id="leaderboard-list">
+          <!-- Scores injected by Javascript -->
+          <li class="empty-score">No records found. Play to establish data!</li>
+        </ol>
+      </div>
+      <div class="leaderboard-footer">
+        <button id="btn-reset-scores" class="danger-btn">ERASE LEADERBOARD</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <p>Antigravity Engine &copy; 2026. Made with ❤️ for retro gaming enthusiasts. Nokia 3310 and Marvel characters are property of their respective owners.</p>
+  </footer>
+
+  <!-- Core Javascript -->
+  <script src="app.js"></script>
+</body>
+</html>
