@@ -2,6 +2,8 @@
 
 A high-fidelity retro simulator of the iconic Nokia 3310 running a custom **Marvel Edition Snake game**. It combines a monochrome LCD screen aesthetic with customizable Marvel "Xpress-on" covers, hero-themed pixel canvas rendering, and monophonic Web Audio API sound waves.
 
+🎮 **[PLAY LIVE ON VERCEL](https://nokia-marvel-snake.vercel.app/)**
+
 ---
 
 ## 🌟 Features
